@@ -11,12 +11,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: FormationRepository::class)]
 class Formation
 {
-
     /**
      * Début de chemin vers les images
      */
-    private const cheminImage = "https://i.ytimg.com/vi/";
-        
+    private const CHEMIN_IMAGE = "https://i.ytimg.com/vi/";
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -61,17 +60,14 @@ class Formation
     public function setPublishedAt(?\DateTimeInterface $publishedAt): static
     {
         $this->publishedAt = $publishedAt;
-
         return $this;
     }
 
-    public function getPublishedAtString(): string {
-        if($this->publishedAt == null){
-            return "";
-        }
-        return $this->publishedAt->format('d/m/Y');     
-    }      
-    
+    public function getPublishedAtString(): string
+    {
+        return $this->publishedAt ? $this->publishedAt->format('d/m/Y') : '';
+    }
+
     public function getTitle(): ?string
     {
         return $this->title;
@@ -80,7 +76,6 @@ class Formation
     public function setTitle(?string $title): static
     {
         $this->title = $title;
-
         return $this;
     }
 
@@ -92,7 +87,6 @@ class Formation
     public function setDescription(?string $description): static
     {
         $this->description = $description;
-
         return $this;
     }
 
@@ -104,21 +98,20 @@ class Formation
     public function setVideoId(?string $videoId): static
     {
         $this->videoId = $videoId;
-
         return $this;
     }
 
     public function getMiniature(): ?string
     {
-        return self::cheminImage.$this->videoId."/default.jpg";
+        return self::CHEMIN_IMAGE . $this->videoId . "/default.jpg";
     }
 
     public function getPicture(): ?string
     {
-        return self::cheminImage.$this->videoId."/hqdefault.jpg";
+        return self::CHEMIN_IMAGE . $this->videoId . "/hqdefault.jpg";
     }
-    
-    public function getPlaylist(): ?playlist
+
+    public function getPlaylist(): ?Playlist
     {
         return $this->playlist;
     }
@@ -126,7 +119,6 @@ class Formation
     public function setPlaylist(?Playlist $playlist): static
     {
         $this->playlist = $playlist;
-
         return $this;
     }
 
@@ -143,14 +135,12 @@ class Formation
         if (!$this->categories->contains($category)) {
             $this->categories->add($category);
         }
-
         return $this;
     }
 
     public function removeCategory(Categorie $category): static
     {
         $this->categories->removeElement($category);
-
         return $this;
     }
 }

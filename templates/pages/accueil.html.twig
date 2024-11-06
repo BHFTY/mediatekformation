@@ -8,12 +8,13 @@
         Vous allez pouvoir vous former à différents outils numériques gratuitement et directement en ligne.<br />
         Dans la partie <strong><a href="{{ path('formations') }}" class="link-info">Formations</a></strong>, vous trouverez la liste des formations proposées.
         Vous pourrez faire des recherches et des tris. 
-        En cliquant sur la capture, vous accèderez à la présentation plus détaillée de la formation ainsi que la vidéo correspondante.<BR />
+        En cliquant sur la capture, vous accèderez à la présentation plus détaillée de la formation ainsi que la vidéo correspondante.<br />
         Vous pouvez aussi retrouver les vidéos regroupées dans des playlists, dans la partie <strong><a href="{{ path('playlists') }}" class="link-info">Playlists</a></strong>.
     </p>
     <p>
         Voici les <strong>deux dernières formations</strong> ajoutées au catalogue :
         <table class="table">
+            <caption>Liste des deux dernières formations ajoutées</caption> <!-- Ajout de la légende -->
             <tr>
                 {% for formation in formations %}
                     <td>
@@ -23,15 +24,14 @@
                                 {% if formation.picture %}
                                     <a href="{{ path('formations.showone', {id:formation.id}) }}">
                                     <img src="{{ formation.picture }}" 
-                                         class="card-img-top" style="width:100%;height:auto;">
+                                         class="card-img-top" style="width:100%;height:auto;" 
+                                         alt="{{ formation.title }}" /> <!-- Ajout de l'attribut alt -->
                                     </a>    
                                 {% endif %}
                             </div>
                             <div class="col">
                                 <p>{{ formation.publishedatstring }}</p>
-                                <h5 class="text-info mt-1">
-                                    {{ formation.title }}
-                                </h5>
+                                <h5 class="text-info mt-1">{{ formation.title }}</h5>
                                 <strong>playlist : </strong>{{ formation.playlist.name }}<br />
                                 <strong>catégories : </strong> 
                                 {% for categorie in formation.categories %}
@@ -39,9 +39,9 @@
                                 {% endfor %}
                             </div>    
                         </div>                    
+                    </td> <!-- Ajout de la balise de fermeture <td> ici pour éviter un problème de balisage -->
                 {% endfor %}    
             </tr>
-
         </table>        
     </p>
 {% endblock %}

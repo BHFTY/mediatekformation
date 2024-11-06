@@ -79,33 +79,36 @@ class Playlist
 
         return $this;
     }
-
-    public function removeFormation(Formation $formation): static
-    {
-        if ($this->formations->removeElement($formation)) {
-            // set the owning side to null (unless already changed)
-            if ($formation->getPlaylist() === $this) {
-                $formation->setPlaylist(null);
-            }
-        }
-
-        return $this;
+public function removeFormation(Formation $formation): static
+{
+    if ($this->formations->removeElement($formation) && $formation->getPlaylist() === $this) {
+        // set the owning side to null (unless already changed)
+        $formation->setPlaylist(null);
     }
+
+    return $this;
+}
+
     
-    /**
-     * @return Collection<int, string>
-     */
-    public function getCategoriesPlaylist() : Collection
-    {
-        $categories = new ArrayCollection();
-        foreach($this->formations as $formation){
-            $categoriesFormation = $formation->getCategories();
-            foreach($categoriesFormation as $categorieFormation)
-            if(!$categories->contains($categorieFormation->getName())){
-                $categories[] = $categorieFormation->getName();
+public function getCategoriesPlaylist(): Collection
+{
+    $categoriesNames = [];
+    
+    foreach ($this->formations as $formation) {
+        $categoriesFormation = $formation->getCategories();
+        
+        foreach ($categoriesFormation as $categorieFormation) {
+            $name = $categorieFormation->getName();
+            // Utilisez la fonction `in_array` pour vérifier les doublons
+            if (!in_array($name, $categoriesNames)) {
+                $categoriesNames[] = $name; 
             }
         }
-        return $categories;
     }
-        
+
+    // Convertir les noms en ArrayCollection
+    return new ArrayCollection($categoriesNames);
+}
+
+
 }

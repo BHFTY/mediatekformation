@@ -1,6 +1,7 @@
 {% extends "basefront.html.twig" %}
 {% block body %}
     <table class="table table-striped">
+        <caption>Liste des Formations</caption> <!-- Added table caption -->
         <thead>
             <tr>
                 <th class="text-left align-top" scope="col">
@@ -75,12 +76,13 @@
                         {{ formation.publishedatstring }}
                     </td>
                     <td class="text-center">
-                        {% if formation.miniature %}
-                            <a href="{{ path('formations.showone', {id:formation.id}) }}">
-                                <img src="{{ formation.miniature }}">
-                            </a>
-                        {% endif %}
-                    </td>
+    {% if formation.miniature %}
+        <a href="{{ path('formations.showone', {id:formation.id}) }}">
+            <img src="{{ formation.miniature }}" alt="{{ formation.title }}">
+        </a>
+    {% endif %}
+</td>
+
                 </tr>
             {% endfor %}
         </tbody>

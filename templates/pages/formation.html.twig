@@ -14,7 +14,7 @@
                     allowfullscreen
                     title="YouTube video player"
                   >
-                </div>                                             
+                </div>
             {% endif %}
         </div>
         <div class="col">
@@ -28,6 +28,12 @@
             <br /><br />
             <strong>description :</strong><br />
                 {{ formation.description|nl2br }}
+
+            <!-- Ajout d'une image avec figure et figcaption -->
+            <figure>
+                <img src="votre_image.jpg" alt="Description de l'image" />
+                <figcaption>Description de l'image.</figcaption>
+            </figure>
         </div>
     </div>
 {% endblock %}

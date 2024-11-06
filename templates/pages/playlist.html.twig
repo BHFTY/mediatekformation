@@ -19,10 +19,11 @@
                 <div class="row mt-1">
                     <div class="col-md-auto">
                         {% if formation.miniature %}
-                            <a href="{{ path('formations.showone', {id:formation.id}) }}">
-                                <img src="{{ formation.miniature }}">
-                            </a>
-                        {% endif %}  
+    <a href="{{ path('formations.showone', {id:formation.id}) }}">
+        <img src="{{ formation.miniature }}" alt="{{ formation.title }}">
+    </a>
+{% endif %}
+
                     </div>
                     <div class="col d-flex align-items-center">
                         <a href="{{ path('formations.showone', {id:formation.id}) }}" 
