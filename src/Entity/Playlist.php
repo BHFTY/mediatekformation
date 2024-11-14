@@ -79,36 +79,41 @@ class Playlist
 
         return $this;
     }
-public function removeFormation(Formation $formation): static
-{
-    if ($this->formations->removeElement($formation) && $formation->getPlaylist() === $this) {
-        // set the owning side to null (unless already changed)
-        $formation->setPlaylist(null);
+
+    public function removeFormation(Formation $formation): static
+    {
+        if ($this->formations->removeElement($formation) && $formation->getPlaylist() === $this) {
+            // set the owning side to null (unless already changed)
+            $formation->setPlaylist(null);
+        }
+
+        return $this;
     }
 
-    return $this;
-}
-
-    
-public function getCategoriesPlaylist(): Collection
-{
-    $categoriesNames = [];
-    
-    foreach ($this->formations as $formation) {
-        $categoriesFormation = $formation->getCategories();
+    public function getCategoriesPlaylist(): Collection
+    {
+        $categoriesNames = [];
         
-        foreach ($categoriesFormation as $categorieFormation) {
-            $name = $categorieFormation->getName();
-            // Utilisez la fonction `in_array` pour vérifier les doublons
-            if (!in_array($name, $categoriesNames)) {
-                $categoriesNames[] = $name; 
+        foreach ($this->formations as $formation) {
+            $categoriesFormation = $formation->getCategories();
+            
+            foreach ($categoriesFormation as $categorieFormation) {
+                $name = $categorieFormation->getName();
+                // Utilisez la fonction `in_array` pour vérifier les doublons
+                if (!in_array($name, $categoriesNames)) {
+                    $categoriesNames[] = $name; 
+                }
             }
         }
+
+        // Convertir les noms en ArrayCollection
+        return new ArrayCollection($categoriesNames);
     }
 
-    // Convertir les noms en ArrayCollection
-    return new ArrayCollection($categoriesNames);
+    // Nouvelle méthode pour obtenir le nombre de formations
+    public function getFormationCount(): int
+    {
+        return $this->formations->count();
+    }
 }
 
-
-}

@@ -74,4 +74,14 @@ class PlaylistRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function countByPlaylist(int $playlistId): int
+{
+    return $this->createQueryBuilder('f')
+        ->select('count(f.id)')
+        ->where('f.playlist = :playlistId')
+        ->setParameter('playlistId', $playlistId)
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+
 }
