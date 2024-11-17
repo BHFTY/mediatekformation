@@ -1,0 +1,23 @@
+{% extends "baseadmin.html.twig" %}
+{% block body %}
+    <h2>Détail playlist :</h2>
+    {{ include ('_admin.playlist.form.html.twig') }}
+    <br></br>
+     <div class="col">
+            <!-- boucle sur l'affichage des formations -->
+            {% for formation in playlistformations %}
+                <div class="row mt-1">
+                    <div class="col-md-auto">
+                        {% if formation.miniature %}
+                            <img src="{{ formation.miniature }}" alt="miniature formation">
+                        {% endif %}  
+                    </div>
+                    <div class="col d-flex align-items-center">
+                        <p class="text-decoration-none">
+                            {{ formation.title }}
+                        </p>     
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+{% endblock %}
