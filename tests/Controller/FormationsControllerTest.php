@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * @author cohen
  */
 class FormationsControllerTest extends WebTestCase{
+    /**
+     * Teste le tri des champs
+     */
    public function testSort() {
         $client = static::createClient();
         // Testez la méthode sort avec le champ 'title' et l'ordre 'ASC'
@@ -42,6 +45,9 @@ class FormationsControllerTest extends WebTestCase{
         // Vérifiez que le titre attendu est bien celui de la première formation après le tri descendant
         $this->assertSelectorTextContains('h5', 'test 1');
     }
+    /**
+     * Teste la recherche de champ
+     */
     public function testFindAllContain() {
         $client = static::createClient();
         $crawler = $client->request('POST', '/formations/recherche/title', ['recherche' => 'Eclipse n°7 : Tests unitaires']);
@@ -59,6 +65,9 @@ class FormationsControllerTest extends WebTestCase{
         // Vérifiez que le titre attendu est bien celui de la première formation après le tri ascendant
         $this->assertSelectorTextContains('h5', 'test 1');
     }
+    /**
+     * Teste l'ouverture d'une page à partir d'un lien
+     */
     public function testShowOne() {
         $client = static::createClient();
         // Utilisez un id de formation valide

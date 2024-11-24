@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
  * @author cohen
  */
 class accueilControllertest extends WebTestCase{
+    /**
+     * test l'accès à la page d'accueil
+     */
     public function testAccesPage(){
         $client = static::createClient();
         $client->request('GET', '/');

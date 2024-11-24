@@ -28,21 +28,37 @@ class Playlist
     #[ORM\OneToMany(targetEntity: Formation::class, mappedBy: 'playlist')]
     private Collection $formations;
 
+    /**
+     * constructeur
+     */
     public function __construct()
     {
         $this->formations = new ArrayCollection();
     }
 
+    /**
+     * 
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * 
+     * @return string|null
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * 
+     * @param string|null $name
+     * @return self
+     */
     public function setName(?string $name): static
     {
         $this->name = $name;
@@ -50,11 +66,20 @@ class Playlist
         return $this;
     }
 
+    /**
+     * 
+     * @return string|null
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * 
+     * @param string|null $description
+     * @return self
+     */
     public function setDescription(?string $description): static
     {
         $this->description = $description;
@@ -70,6 +95,11 @@ class Playlist
         return $this->formations;
     }
 
+    /**
+     * 
+     * @param Formation $formation
+     * @return self
+     */
     public function addFormation(Formation $formation): static
     {
         if (!$this->formations->contains($formation)) {
@@ -111,6 +141,10 @@ class Playlist
     }
 
     // Nouvelle méthode pour obtenir le nombre de formations
+    /**
+     * 
+     * @return int
+     */
     public function getFormationCount(): int
     {
         return $this->formations->count();

@@ -59,28 +59,6 @@ class AdminCategoriesController extends AbstractController {
         return $this->redirectToRoute('admin.categories');
     }
     
-    /**
-    * @Route("/admin/categorie/ajout", name="admin.categorie.ajout")
-    * @param Request $request
-    * @return Response
-    */
-   /*public function ajout(Request $request): Response{
-       $nomCategorie = $request->get("name");
-       // Vérifiez si le nom de la catégorie est vide
-       if(empty($nomCategorie)) {
-           // Ajoutez un message flash d'erreur
-           $this->addFlash('error', 'Le nom de la catégorie est requis.');
-           // Redirigez vers la même page pour afficher le message flash
-           return $this->redirectToRoute('admin.categories');
-       }
-       $categorie = new Categorie();
-       $categorie->setName($nomCategorie);
-       $this->categorieRepository->add($categorie, true);
-       // Ajoutez un message flash de succès
-       $this->addFlash('success', 'La catégorie a été ajoutée avec succès.');
-       return $this->redirectToRoute('admin.categories');       
-   }*/
-   
    /**
     * @Route("/admin/categorie/ajout", name="admin.categorie.ajout")
     * @param Request $request

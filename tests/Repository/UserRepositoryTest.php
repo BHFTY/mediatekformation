@@ -11,22 +11,39 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @author cohen
  */
 class UserRepositoryTest extends KernelTestCase{
+    /**
+     * 
+     * @return UserRepository
+     */
    public function recupRepository(): UserRepository {
         self::bootKernel();
         $repository = self::getContainer()->get(UserRepository::class);
         return $repository;
     }
+    
+    /**
+     * Teste le nombre d'utilisateur
+     */
     public function testNbUsers() {
         $repository = $this->recupRepository();
         $nbUsers = $repository->count([]);
         $this->assertEquals(1, $nbUsers);
     }
+    
+    /**
+     * Créer un utilisateur
+     * @return User
+     */
     public function newUser(): User {
         $user = (new User())
                 ->setEmail("emailtest@dom.com")
                 ->setPassword("testmdp");
         return $user;
     }
+    
+    /**
+     * Teste l'ajout d'un utilisateur 
+     */
     public function testAddUser() {
         $repository = $this->recupRepository();
         $user = $this->newUser();
@@ -34,6 +51,10 @@ class UserRepositoryTest extends KernelTestCase{
         $repository->add($user, true);
         $this->assertEquals($nbUsers + 1, $repository->count([]), "erreur lors de l'ajout");
     }
+    
+    /**
+     * Teste la suppression d'un utilisateur 
+     */
     public function testRemoveUser() {
         $repository = $this->recupRepository();
         $user = $this->newUser();
@@ -43,6 +64,9 @@ class UserRepositoryTest extends KernelTestCase{
         $this->assertEquals($nbUsers - 1, $repository->count([]), "erreur lors de la suppression");
     }
     
+    /**
+     * Teste la modification du mot de passe
+     */
     public function testUpgradePassword()
     {
         $repository = $this->recupRepository();

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21aebe3c4d6be175d27c69b54ca21aa7",
+    "content-hash": "a1cf047cc2a286a27f6e459f52c8f051",
     "packages": [
         {
             "name": "composer/semver",
@@ -2829,6 +2829,32 @@
                 "source": "https://github.com/stevenmaguire/oauth2-keycloak/tree/3.1.0"
             },
             "time": "2022-07-22T07:06:27+00:00"
+        },
+        {
+            "name": "symfony/apache-pack",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/apache-pack.git",
+                "reference": "450b8490bd887de3f29390e254f9a5025353c173"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/apache-pack/zipball/450b8490bd887de3f29390e254f9a5025353c173",
+                "reference": "450b8490bd887de3f29390e254f9a5025353c173",
+                "shasum": ""
+            },
+            "type": "metapackage",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A pack for Apache support in Symfony",
+            "support": {
+                "issues": "https://github.com/symfony/apache-pack/issues",
+                "source": "https://github.com/symfony/apache-pack/tree/master"
+            },
+            "time": "2017-11-23T14:58:24+00:00"
         },
         {
             "name": "symfony/asset",

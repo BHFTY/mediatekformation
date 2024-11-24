@@ -10,21 +10,38 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @author cohen
  */
 class PlaylistRepositoryTest extends KernelTestCase{
+    /**
+     * 
+     * @return PlaylistRepository
+     */
     public function recupRepository(): PlaylistRepository {
         self::bootKernel();
         $repository = self::getContainer()->get(PlaylistRepository::class);
         return $repository;
     }
+    
+    /**
+     * Teste le nombre de playlists
+     */
     public function testNbPlaylists() {
         $repository = $this->recupRepository();
         $nbPlaylists = $repository->count([]);
         $this->assertEquals(26, $nbPlaylists);
     }
+    
+    /**
+     * Créer une playlist 
+     * @return Playlist
+     */
     public function newPlaylist(): Playlist {
         $playlist = (new Playlist())
                 ->setName("PlaylistTest");
         return $playlist;
     }
+    
+    /**
+     * Teste l'ajout d'une playlist
+     */
     public function testAddPlaylist() {
         $repository = $this->recupRepository();
         $playlist = $this->newPlaylist();
@@ -32,6 +49,10 @@ class PlaylistRepositoryTest extends KernelTestCase{
         $repository->add($playlist, true);
         $this->assertEquals($nbPlaylists + 1, $repository->count([]), "erreur lors de l'ajout");
     }
+    
+    /**
+     * Teste la suppression d'une playlist
+     */
     public function testRemovePlaylist() {
         $repository = $this->recupRepository();
         $playlist = $this->newPlaylist();
@@ -40,6 +61,10 @@ class PlaylistRepositoryTest extends KernelTestCase{
         $repository->remove($playlist, true);
         $this->assertEquals($nbPlaylists - 1, $repository->count([]), "erreur lors de la suppression");
     }
+    
+    /**
+     * Teste le tri des playlists en fonction de leur nom
+     */
     public function testFindAllOrderByName() {
         $repository = $this->recupRepository();
         $playlists = $repository->findAllOrderByName('ASC');
@@ -53,6 +78,10 @@ class PlaylistRepositoryTest extends KernelTestCase{
         }
         $this->assertTrue(true);
     }
+    
+    /**
+     * Teste le tri des playlists en fonction de leur nombre de formations 
+     */
     public function testFindAllOrderByNumberOfFormations() {
         $repository = $this->recupRepository();
         $playlists = $repository->findAllOrderByNumberOfFormations('ASC');
