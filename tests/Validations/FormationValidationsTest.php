@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  * @author cohen
  */
 class FormationValidationsTest extends KernelTestCase{
+    
     /**
      * 
      * @return Formation
