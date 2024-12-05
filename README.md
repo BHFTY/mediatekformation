@@ -70,7 +70,7 @@ Cette interface est présentée lorsque l'administrateur sélectionne l'option d
 ![img](https://github.com/BHFTY/test3/blob/master/D%C3%A9tailsFormation.PNG?raw=true)
 Cette interface se présente lorsqu'un administrateur sélectionne l'option d'édition d'une formation. Elle se rapproche de la page dédiée à l'ajout d'une formation, mais le formulaire est déjà pré-rempli avec les données pertinentes de la formation choisie par l'utilisateur.
 ### Page 10 : Page des Playlists
-§[img](https://github.com/BHFTY/test3/blob/master/Playlist.PNG?raw=true)
+![img](https://github.com/BHFTY/test3/blob/master/Playlist.PNG?raw=true)
 Cette interface se manifeste lorsque l'administrateur sélectionne l'option "Playlists" dans le menu de navigation. Elle présente des similitudes avec la page des playlists accessible en front-office. À l'instar de la section dédiée aux formations dans l'interface d'administration, cette page comporte une colonne de gestion permettant d'ajouter, de modifier ou de supprimer une playlist. De surcroît, l'activation du bouton de suppression engendre l'affichage d'une fenêtre contextuelle sollicitant une confirmation de la suppression. Il convient de noter que la suppression d'une playlist n'est envisageable que si celle-ci est dépourvue de contenu. Dans le cas contraire, un message d'erreur sera affiché en haut de l'écran pour en avertir l'utilisateur.
 ### Page 11 : Ajout d'une playlist
 ![img](https://github.com/BHFTY/test3/blob/master/AjoutPlaylist.PNG?raw=true)
